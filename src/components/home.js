@@ -13,7 +13,7 @@ const Home = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef }) => {
       <section style={styles.heroSection}>
         <div style={styles.heroContent}>
           <h1 style={styles.heroTitle}>Mateo Vizio</h1>
-          <img src='/cara.png' style={styles.foto}></img>
+          <img src='`${process.env.PUBLIC_URL}/cara.png`' style={styles.foto}></img>
           <p style={styles.heroSubtitle}>Desarrollador Web | Desarrollador de Aplicaciones de Escritorio | Desarrollador Móvil</p>
           <a onClick={handleScroll} style={styles.ctaButton}>Contáctame</a>
         </div>
@@ -57,7 +57,7 @@ const Home = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef }) => {
         <p style={styles.text}>Estoy abierto a nuevas oportunidades laborales. Si estás interesado en darme una oportunidad, te dejo mi información de contacto:</p>
         <p style={styles.contactInfo}>Teléfono: <a href="tel:+5999300547" style={styles.link}>099300547</a></p>
         <p style={styles.contactInfo}>Correo Electrónico: <a href="mailto:mateovizio93@gmail.com" style={styles.link}>mateovizio93@gmail.com</a></p>
-        <a href="/CvMateoVizio.pdf" style={styles.downloadButton} download>Descargar Currículum</a>
+        <a href="`${process.env.PUBLIC_URL}/CvMateoVizio.pdf`" style={styles.downloadButton} download>Descargar Currículum</a>
       </section>
 
       {/* footer */}
