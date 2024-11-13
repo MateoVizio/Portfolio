@@ -20,7 +20,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://<tu-usuario-de-github>.github.io/<nombre-del-repositorio>",
+  "homepage": "https://mateovizio.github.io/Portfolio",
   "eslintConfig": {
     "extends": [
       "react-app",
