@@ -39,9 +39,9 @@ const styles = {
     display: "flex",
     padding: 0,
     justifyContent: "space-between",
-    width: "80%",
+    width: "90%",
     fontWeight: 600,
-    gap: "10px",
+    gap: "7px",
     maxWidth: "600px"
   },
   listItem: {
