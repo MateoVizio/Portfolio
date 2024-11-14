@@ -112,7 +112,7 @@ const styles = {
     boxSizing: 'border-box',
   },
   heroSection: {
-    background: 'linear-gradient(180deg, #1B243E 0%, #010712 100%)',
+    background: 'linear-gradient(180deg, #010712 0%, #1B243E 100%)', // #1B243E, #010712
     color: '#fff',
     padding: '80px 20px',
     textAlign: 'center',
