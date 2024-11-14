@@ -245,6 +245,9 @@ const styles = {
     borderRadius: '5px',
     textDecoration: 'none',
     fontWeight: 'bold',
+  },
+  foto:{
+    height: "250px"
   }
 };
 
