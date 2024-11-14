@@ -94,8 +94,8 @@ const Home = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef }) => {
         <Fade duration={1500}>
           <p style={styles.footerText}>© 2024 Mateo Vizio. Todos los derechos reservados.</p>
           <div style={styles.socialLinks}>
-            <a href="https://www.linkedin.com/in/tuusuario" style={styles.footerLink} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a href="https://github.com/tuusuario" style={styles.footerLink} target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/tuusuario" style={styles.link} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/tuusuario" style={styles.link} target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
         </Fade>
       </footer>
