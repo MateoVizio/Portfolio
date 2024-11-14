@@ -26,7 +26,7 @@ const styles = {
     position: "fixed",
     top: 0,
     zIndex: 1000,
-    backgroundColor: "#3F5EBA",
+    backgroundColor: "#1c306a",
     width: "100%",
     height: "50px",
     color: "white",
