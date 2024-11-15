@@ -11,6 +11,7 @@ function App() {
   const proyectosRef = useRef(null);
   const habilidadesRef = useRef(null);
   const contactoRef = useRef(null);
+  const educacionRef = useRef(null);
 
   return (
     <div className="App">
@@ -19,12 +20,14 @@ function App() {
         proyectosRef={proyectosRef}
         habilidadesRef={habilidadesRef}
         contactoRef={contactoRef}
+        educacionRef={educacionRef}
       />
       <Home 
         sobreMiRef={sobreMiRef}
         proyectosRef={proyectosRef}
         habilidadesRef={habilidadesRef}
         contactoRef={contactoRef}
+        educacionRef={educacionRef}
       />
     </div>
   );

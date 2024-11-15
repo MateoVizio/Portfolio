@@ -2,7 +2,7 @@ import React from 'react';
 import { Fade } from 'react-awesome-reveal';
 import { ReactTyped } from 'react-typed';
 
-const Home = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef }) => {
+const Home = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef, educacionRef }) => {
 
   const handleScroll = () => {
     if (contactoRef.current) {
@@ -49,11 +49,25 @@ const Home = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef }) => {
           <div style={styles.projectsGrid}>
             <div style={styles.projectCard} className="hvr-float">
               <h3 style={styles.projectTitle}>Proyecto de gestión de gimnasio</h3>
+              <img style={styles.imagenProyecto} src="https://www.memo-juegos.com/jeux/new_games/simon/classic_new/image_bg.jpg?v=4"></img>
               <p style={styles.text}>Aplicación de escritorio realizada para atender las necesidades de un cliente. Permite manejar los aspectos fundamentales de su negocio</p>
               <a href="https://github.com/tuusuario/proyecto-web" style={styles.link} target="_blank" rel="noopener noreferrer">Ver proyecto</a>
             </div>
             <div style={styles.projectCard} className="hvr-float">
               <h3 style={styles.projectTitle}>Juego de memorizar para móvil</h3>
+              <img style={styles.imagenProyecto} src="https://www.memo-juegos.com/jeux/new_games/simon/classic_new/image_bg.jpg?v=4"></img>
+              <p style={styles.text}>Juego de memorizar una secuencia de colores, aumentando su dificultad según avanza el nivel. Realizado con React Native</p>
+              <a href="https://github.com/tuusuario/proyecto-movil" style={styles.link} target="_blank" rel="noopener noreferrer">Ver proyecto</a>
+            </div>
+            <div style={styles.projectCard} className="hvr-float">
+              <h3 style={styles.projectTitle}>Juego de memorizar para móvil</h3>
+              <img style={styles.imagenProyecto} src="https://www.memo-juegos.com/jeux/new_games/simon/classic_new/image_bg.jpg?v=4"></img>
+              <p style={styles.text}>Juego de memorizar una secuencia de colores, aumentando su dificultad según avanza el nivel. Realizado con React Native</p>
+              <a href="https://github.com/tuusuario/proyecto-movil" style={styles.link} target="_blank" rel="noopener noreferrer">Ver proyecto</a>
+            </div>
+            <div style={styles.projectCard} className="hvr-float">
+              <h3 style={styles.projectTitle}>Juego de memorizar para móvil</h3>
+              <img style={styles.imagenProyecto} src="https://www.memo-juegos.com/jeux/new_games/simon/classic_new/image_bg.jpg?v=4"></img>
               <p style={styles.text}>Juego de memorizar una secuencia de colores, aumentando su dificultad según avanza el nivel. Realizado con React Native</p>
               <a href="https://github.com/tuusuario/proyecto-movil" style={styles.link} target="_blank" rel="noopener noreferrer">Ver proyecto</a>
             </div>
@@ -75,6 +89,27 @@ const Home = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef }) => {
         </section>
       </Fade>
       </section>
+
+      <section ref={educacionRef}>
+  <Fade duration={1500}>
+    <section id="education" style={styles.sectionEd}>
+      <h2 style={styles.sectionTitle}>Educación</h2>
+      <div style={styles.educacionItem}>
+        <h3 style={{marginBottom: "5px"}}>Educación Secundaria</h3>
+        <p style={{marginTop: "5px"}}>Finalizado en 2021, Liceo N°2 de Juan Lacaze</p>
+      </div>
+      <div style={styles.educacionItem}>
+        <h3 style={{marginBottom: "5px"}}>Inglés</h3>
+        <p style={{marginTop: "5px"}}>Nivel B2. Obtenido en la institución Alianza en 2021</p>
+      </div>
+      <div style={styles.educacionItem}>
+        <h3 style={{marginBottom: "5px"}}>Analista Programador</h3>
+        <p style={{marginTop: "5px"}}>Graduado de la carrera en 2024, en la institución CTC (CLAEH)</p>
+      </div>
+    </section>
+  </Fade>
+</section>
+
       
 
       <section ref={contactoRef}>
@@ -105,8 +140,9 @@ const Home = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef }) => {
 
 const styles = {
   homeContainer: {
-    fontFamily: 'Arial, sans-serif',
+    fontFamily: 'Roboto, sans-serif',
     lineHeight: '1.6',
+    fontSize:"18px",
     margin: 0,
     padding: 0,
     boxSizing: 'border-box',
@@ -149,6 +185,12 @@ const styles = {
     margin: '0 auto',
     textAlign: "center",
   },
+  sectionEd: {
+    padding: '40px 20px',
+    maxWidth: '650px',
+    margin: '0 auto',
+    textAlign: "center",
+  },
   sectionTitle: {
     fontSize: '2rem',
     marginBottom: '20px',
@@ -160,7 +202,7 @@ const styles = {
   projectsGrid: {
     display: 'grid',
     gap: '20px',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+    gridTemplateColumns: 'repeat(2, minmax(250px, 1fr))',
   },
   projectCard: {
     padding: '20px',
@@ -248,7 +290,24 @@ const styles = {
   },
   foto:{
     height: "250px"
-  }
+  },
+  imagenProyecto:{
+    height: "150px",
+    borderRadius: "50%"
+  },
+  educacionItem: {
+    marginBottom: '20px',
+    textAlign: 'left',
+    padding: '10px',
+    paddingLeft: "40px",
+    paddingRight: "40px",
+    border: '1px solid #ccc',
+    borderRadius: '5px',
+    backgroundColor: '#1c306a',
+    color: "white",
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.5)',
+  },
+  
 };
 
 export default Home;
