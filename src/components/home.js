@@ -71,7 +71,7 @@ const Home = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef, educacion
             <div style={styles.projectCard} className="hvr-float">
               <h3 style={styles.projectTitle}>Juego de memorizar para móvil</h3>
               <img style={styles.imagenProyecto} src="https://www.memo-juegos.com/jeux/new_games/simon/classic_new/image_bg.jpg?v=4"></img>
-              <p style={styles.text}>Juego de memorizar una secuencia de colores, aumentando su dificultad según avanza el nivel. Realizado con React Native</p>
+              <p style={styles.text}>Juego de memorizar una secuencia de colores, aumentando su dificultad según avanza el nivel. Realizado con React Native &nbsp;&nbsp;</p>
               <a href="https://github.com/tuusuario/proyecto-movil" style={styles.link} target="_blank" rel="noopener noreferrer">Ver proyecto</a>
             </div>
             <div style={styles.projectCard} className="hvr-float">
@@ -109,15 +109,15 @@ const Home = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef, educacion
   <Fade duration={1500}>
     <section id="education" style={styles.sectionEd}>
       <h2 style={styles.sectionTitle}>Educación</h2>
-      <div style={styles.educacionItem}>
+      <div style={styles.educacionItem} className="hvr-float">
         <h3 style={{marginBottom: "5px"}}>Educación Secundaria</h3>
         <p style={{marginTop: "5px"}}>Finalizado en 2021, Liceo N°2 de Juan Lacaze</p>
       </div>
-      <div style={styles.educacionItem}>
+      <div style={styles.educacionItem} className="hvr-float">
         <h3 style={{marginBottom: "5px"}}>Inglés</h3>
         <p style={{marginTop: "5px"}}>Nivel B2. Obtenido en la institución Alianza en 2021</p>
       </div>
-      <div style={styles.educacionItem}>
+      <div style={styles.educacionItem} className="hvr-float">
         <h3 style={{marginBottom: "5px"}}>Analista Programador</h3>
         <p style={{marginTop: "5px"}}>Graduado de la carrera en 2024, en la institución CTC (CLAEH)</p>
       </div>
@@ -127,13 +127,13 @@ const Home = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef, educacion
 
       
 
-      <section ref={contactoRef}>
+      <section ref={contactoRef} style={{marginBottom: "70px"}}>
       <Fade duration={1500}>
         <section id="contact"  style={styles.section}>
           <h2 style={styles.sectionTitle}>Contacto</h2>
           <p style={styles.text}>Estoy abierto a nuevas oportunidades laborales. Si estás interesado en darme una oportunidad, te dejo mi información de contacto:</p>
-          <p style={styles.contactInfo}>Teléfono: <a href="tel:+5999300547" style={styles.link}>099300547</a></p>
-          <p style={styles.contactInfo}>Correo Electrónico: <a href="mailto:mateovizio93@gmail.com" style={styles.link}>mateovizio93@gmail.com</a></p>
+          <p style={styles.contactInfo}>Teléfono: <a className="hvr-underline-from-left" href="tel:+59899300547" style={styles.link}>099300547</a></p>
+          <p style={styles.contactInfo}>Correo Electrónico: <a className="hvr-underline-from-left" href="mailto:mateovizio93@gmail.com" style={styles.link}>mateovizio93@gmail.com</a></p>
           <a href="./CvMateoVizio.pdf" style={styles.downloadButton} download className="hvr-grow">Descargar Currículum</a>
         </section>
       </Fade>
@@ -163,12 +163,11 @@ const styles = {
     boxSizing: 'border-box',
   },
   heroSection: {
-    background: 'linear-gradient(180deg, #010712 0%, #1B243E 100%)', // #1B243E, #010712
+    background: 'linear-gradient(180deg, #010712 0%, #1B243E 100%)',
     color: '#fff',
     padding: '80px 20px',
     textAlign: 'center',
-    position: 'relative',  // Aseguramos que el z-index funcione
-    zIndex: 1,
+    position: 'relative',
   },
   heroContent: {
     maxWidth: '800px',
@@ -205,6 +204,7 @@ const styles = {
     maxWidth: '650px',
     margin: '0 auto',
     textAlign: "center",
+    justifyContent: "center"
   },
   sectionTitle: {
     fontSize: '2rem',
@@ -313,14 +313,14 @@ const styles = {
   educacionItem: {
     marginBottom: '20px',
     textAlign: 'left',
-    padding: '10px',
-    paddingLeft: "40px",
-    paddingRight: "40px",
+    padding: '10px 0px 10px 40px',
     border: '1px solid #ccc',
     borderRadius: '5px',
     backgroundColor: '#1c306a',
     color: "white",
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.5)',
+    width: "90%",
+    cursor: "pointer"
   },
   
 };
