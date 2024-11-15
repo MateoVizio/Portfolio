@@ -1,8 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Fade } from 'react-awesome-reveal';
 import { ReactTyped } from 'react-typed';
+import { useMediaQuery } from 'react-responsive';
+
 
 const Home = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef, educacionRef }) => {
+
+  const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
+  const isTabletOrAbove = useMediaQuery({ query: '(min-width: 768px)' });
+
+  useEffect(() => {
+    console.log('isMobile:', isMobile, 'isTabletOrAbove:', isTabletOrAbove);
+
+  }, [])
+  
 
   const handleScroll = () => {
     if (contactoRef.current) {
@@ -46,7 +57,11 @@ const Home = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef, educacion
       <Fade duration={1500}>
         <section id="projects"  style={styles.section}>
           <h2 style={styles.sectionTitle}>Proyectos</h2>
-          <div style={styles.projectsGrid}>
+          <div style={{
+              display: 'grid',
+              gap: '20px',
+              gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', // 1 columna en móviles, 2 en pantallas grandes
+            }}>
             <div style={styles.projectCard} className="hvr-float">
               <h3 style={styles.projectTitle}>Proyecto de gestión de gimnasio</h3>
               <img style={styles.imagenProyecto} src="https://www.memo-juegos.com/jeux/new_games/simon/classic_new/image_bg.jpg?v=4"></img>
@@ -199,11 +214,11 @@ const styles = {
   text: {
     marginBottom: '15px',
   },
-  projectsGrid: {
-    display: 'grid',
-    gap: '20px',
-    gridTemplateColumns: 'repeat(2, minmax(250px, 1fr))',
-  },
+  // projectsGrid: {
+  //   display: 'grid',
+  //   gap: '20px',
+  //   gridTemplateColumns: 'repeat(2, minmax(250px, 1fr))',
+  // },
   projectCard: {
     padding: '20px',
     border: '1px solid #ccc',
