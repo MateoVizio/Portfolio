@@ -4,16 +4,25 @@ import { ReactTyped } from 'react-typed';
 import { useMediaQuery } from 'react-responsive';
 
 
-const Home = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef, educacionRef }) => {
+const Home = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef, educacionRef, isDayMode, setMostrarMenu, mostrarMenu}) => {
 
   const isMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const isTabletOrAbove = useMediaQuery({ query: '(min-width: 768px)' });
 
   useEffect(() => {
-    console.log('isMobile:', isMobile, 'isTabletOrAbove:', isTabletOrAbove);
-
-  }, [])
+    if (mostrarMenu) {
+      document.body.style.overflow = 'hidden';  // Bloquea el desplazamiento
+    } else {
+      document.body.style.overflow = 'auto';  // Restaura el desplazamiento
+    }
+  }, [mostrarMenu]);
   
+  const handleScrollToSection = (ref) => {
+    setMostrarMenu(false);
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const handleScroll = () => {
     if (contactoRef.current) {
@@ -23,12 +32,11 @@ const Home = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef, educacion
 
   return (
     <div style={styles.homeContainer}>
-      
-      <section style={styles.heroSection}>
+      <section style={{...styles.heroSection, background: isDayMode ? 'linear-gradient(180deg, #010712 0%, #1B243E 100%)' : "linear-gradient(180deg, #152538 80%, #070F18 100%)" , color: isDayMode ? "white" : "#E0E6ED", paddingBottom: isDayMode ? "80px" : "150px"}}>
         <div style={styles.heroContent}>
           <Fade>
             <h1 style={styles.heroTitle}>Mateo Vizio</h1>
-            <img src='./cara.png' style={styles.foto} alt="Foto" />
+            <img src='https://cdn-images.livecareer.es/pages/foto_cv_lc_es_4.jpg' style={styles.foto} alt="Foto" />
             <p style={styles.heroSubtitle}>Desarrollador{" "}
               <ReactTyped
                 strings={["Web", "de Escritorio", "Móvil"]}
@@ -38,12 +46,13 @@ const Home = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef, educacion
                 showCursor
               />
             </p>
-            <a onClick={handleScroll} style={styles.ctaButton} className="hvr-grow">Contáctame</a>
+            <a onClick={handleScroll} style={{...styles.ctaButton , backgroundColor: isDayMode ? "#3fa0bb" : "black"}} className="hvr-grow">Contáctame</a>
           </Fade>
         </div>
       </section>
       
-      <section ref={sobreMiRef}>
+      <section style={{...styles.sectionContainer, backgroundColor: isDayMode ? "white" : "#070F18", color: isDayMode ? "black" : "#E0E6ED"}} 
+                ref={sobreMiRef}>
       <Fade duration={1500}>
         <section id="about"  style={styles.section}>
           <h2 style={styles.sectionTitle}>Sobre mí</h2>
@@ -53,38 +62,34 @@ const Home = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef, educacion
       </section>
       
 
-      <section ref={proyectosRef}>
+      <section style={{...styles.sectionContainer, backgroundColor: isDayMode ? "white" : "#070F18", color: isDayMode ? "black" : "#E0E6ED"}}  ref={proyectosRef}>
       <Fade duration={1500}>
         <section id="projects"  style={styles.section}>
           <h2 style={styles.sectionTitle}>Proyectos</h2>
           <div style={{
               display: 'grid',
               gap: '20px',
-              gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', // 1 columna en móviles, 2 en pantallas grandes
+              gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
             }}>
-            <div style={styles.projectCard} className="hvr-float">
+            <div style={{...styles.projectCard, backgroundColor: isDayMode ? "white" : "#152538"}} className="hvr-float">
               <h3 style={styles.projectTitle}>Proyecto de gestión de gimnasio</h3>
               <img style={styles.imagenProyecto} src="https://www.memo-juegos.com/jeux/new_games/simon/classic_new/image_bg.jpg?v=4"></img>
               <p style={styles.text}>Aplicación de escritorio realizada para atender las necesidades de un cliente. Permite manejar los aspectos fundamentales de su negocio</p>
-              <a href="https://github.com/tuusuario/proyecto-web" style={styles.link} target="_blank" rel="noopener noreferrer">Ver proyecto</a>
             </div>
-            <div style={styles.projectCard} className="hvr-float">
+            <div style={{...styles.projectCard, backgroundColor: isDayMode ? "white" : "#152538"}} className="hvr-float">
               <h3 style={styles.projectTitle}>Juego de memorizar para móvil</h3>
               <img style={styles.imagenProyecto} src="https://www.memo-juegos.com/jeux/new_games/simon/classic_new/image_bg.jpg?v=4"></img>
               <p style={styles.text}>Juego de memorizar una secuencia de colores, aumentando su dificultad según avanza el nivel. Realizado con React Native &nbsp;&nbsp;</p>
-              <a href="https://github.com/tuusuario/proyecto-movil" style={styles.link} target="_blank" rel="noopener noreferrer">Ver proyecto</a>
             </div>
-            <div style={styles.projectCard} className="hvr-float">
+            <div style={{...styles.projectCard, backgroundColor: isDayMode ? "white" : "#152538"}} className="hvr-float">
               <h3 style={styles.projectTitle}>Juego de memorizar para móvil</h3>
               <img style={styles.imagenProyecto} src="https://www.memo-juegos.com/jeux/new_games/simon/classic_new/image_bg.jpg?v=4"></img>
               <p style={styles.text}>Juego de memorizar una secuencia de colores, aumentando su dificultad según avanza el nivel. Realizado con React Native</p>
-              <a href="https://github.com/tuusuario/proyecto-movil" style={styles.link} target="_blank" rel="noopener noreferrer">Ver proyecto</a>
             </div>
-            <div style={styles.projectCard} className="hvr-float">
+            <div style={{...styles.projectCard, backgroundColor: isDayMode ? "white" : "#152538"}} className="hvr-float">
               <h3 style={styles.projectTitle}>Juego de memorizar para móvil</h3>
               <img style={styles.imagenProyecto} src="https://www.memo-juegos.com/jeux/new_games/simon/classic_new/image_bg.jpg?v=4"></img>
               <p style={styles.text}>Juego de memorizar una secuencia de colores, aumentando su dificultad según avanza el nivel. Realizado con React Native</p>
-              <a href="https://github.com/tuusuario/proyecto-movil" style={styles.link} target="_blank" rel="noopener noreferrer">Ver proyecto</a>
             </div>
           </div>
         </section>
@@ -92,7 +97,7 @@ const Home = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef, educacion
       </section>
       
 
-      <section ref={habilidadesRef}>
+      <section style={{...styles.sectionContainer, backgroundColor: isDayMode ? "white" : "#070f18", color: isDayMode ? "black" : "#E0E6ED"}}  ref={habilidadesRef}>
       <Fade duration={1500}>
         <section id="skills"  style={styles.section}>
           <h2 style={styles.sectionTitle}>Tecnologías</h2>
@@ -105,19 +110,19 @@ const Home = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef, educacion
       </Fade>
       </section>
 
-      <section ref={educacionRef}>
+      <section style={{...styles.sectionContainer, backgroundColor: isDayMode ? "white" : "#070f18", color: isDayMode ? "black" : "#E0E6ED"}}  ref={educacionRef}>
   <Fade duration={1500}>
     <section id="education" style={styles.sectionEd}>
       <h2 style={styles.sectionTitle}>Educación</h2>
-      <div style={styles.educacionItem} className="hvr-float">
+      <div style={{...styles.educacionItem, backgroundColor: isDayMode ? "#1c306a" : "#152538"}} className="hvr-float">
         <h3 style={{marginBottom: "5px"}}>Educación Secundaria</h3>
         <p style={{marginTop: "5px"}}>Finalizado en 2021, Liceo N°2 de Juan Lacaze</p>
       </div>
-      <div style={styles.educacionItem} className="hvr-float">
+      <div style={{...styles.educacionItem, backgroundColor: isDayMode ? "#1c306a" : "#152538"}} className="hvr-float">
         <h3 style={{marginBottom: "5px"}}>Inglés</h3>
         <p style={{marginTop: "5px"}}>Nivel B2. Obtenido en la institución Alianza en 2021</p>
       </div>
-      <div style={styles.educacionItem} className="hvr-float">
+      <div style={{...styles.educacionItem, backgroundColor: isDayMode ? "#1c306a" : "#152538"}} className="hvr-float">
         <h3 style={{marginBottom: "5px"}}>Analista Programador</h3>
         <p style={{marginTop: "5px"}}>Graduado de la carrera en 2024, en la institución CTC (CLAEH)</p>
       </div>
@@ -127,17 +132,25 @@ const Home = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef, educacion
 
       
 
-      <section ref={contactoRef} style={{marginBottom: "70px"}}>
+      <section ref={contactoRef} style={{...styles.sectionContainer, backgroundColor: isDayMode ? "white" : "#070f18", color: isDayMode ? "black" : "#E0E6ED", paddingBottom: "70px"}}>
       <Fade duration={1500}>
         <section id="contact"  style={styles.section}>
           <h2 style={styles.sectionTitle}>Contacto</h2>
           <p style={styles.text}>Estoy abierto a nuevas oportunidades laborales. Si estás interesado en darme una oportunidad, te dejo mi información de contacto:</p>
-          <p style={styles.contactInfo}>Teléfono: <a className="hvr-underline-from-left" href="tel:+59899300547" style={styles.link}>099300547</a></p>
-          <p style={styles.contactInfo}>Correo Electrónico: <a className="hvr-underline-from-left" href="mailto:mateovizio93@gmail.com" style={styles.link}>mateovizio93@gmail.com</a></p>
-          <a href="./CvMateoVizio.pdf" style={styles.downloadButton} download className="hvr-grow">Descargar Currículum</a>
+          <p style={styles.contactInfo}>Teléfono: <a className="hvr-underline-from-left" href="tel:+59899300547" style={{...styles.link, color: isDayMode ? "#3fa0bb" : "#5e87b6"}}>099300547</a></p>
+          <p style={styles.contactInfo}>Correo Electrónico: <a className="hvr-underline-from-left" href="mailto:mateovizio93@gmail.com" style={{...styles.link, color: isDayMode ? "#3fa0bb" : "#5e87b6"}}>mateovizio93@gmail.com</a></p>
+          <a href="./CvMateoVizio.pdf" style={{...styles.downloadButton, backgroundColor: isDayMode ? "#3fa0bb" : "#284970"}} download className="hvr-grow">Descargar Currículum</a>
         </section>
       </Fade>
       </section>
+      {mostrarMenu &&
+      <div style={styles.menuHamburguesaDesplegado}>
+        <label style={styles.menuMobileElement} onClick={() => handleScrollToSection(sobreMiRef)}>Sobre mí</label>
+        <label style={styles.menuMobileElement} onClick={() => handleScrollToSection(proyectosRef)}>Proyectos</label>
+        <label style={styles.menuMobileElement} onClick={() => handleScrollToSection(habilidadesRef)}>Tecnologías</label>
+        <label style={styles.menuMobileElement} onClick={() => handleScrollToSection(educacionRef)}>Educación</label>
+        <label style={styles.menuMobileElement} onClick={() => handleScrollToSection(contactoRef)}>Contacto</label>
+      </div>}
       
 
       <footer style={styles.footer}>
@@ -163,11 +176,11 @@ const styles = {
     boxSizing: 'border-box',
   },
   heroSection: {
-    background: 'linear-gradient(180deg, #010712 0%, #1B243E 100%)',
     color: '#fff',
     padding: '80px 20px',
     textAlign: 'center',
     position: 'relative',
+    transition: "background-color 0.4s ease"
   },
   heroContent: {
     maxWidth: '800px',
@@ -191,13 +204,25 @@ const styles = {
     fontWeight: 'bold',
     cursor: 'pointer',
     zIndex: 2,
-    userSelect: "none"
+    userSelect: "none",
+    transition: "transform 0.4s ease"
   },
   section: {
     padding: '40px 20px',
     maxWidth: '800px',
     margin: '0 auto',
     textAlign: "center",
+  },
+  sectionContainer:{
+    transition: "background-color 0.5s ease",
+
+  },
+  sectionDark: {
+    padding: '40px 20px',
+    maxWidth: '800px',
+    margin: '0 auto',
+    textAlign: "center",
+    backgroundColor: "#080818"
   },
   sectionEd: {
     padding: '40px 20px',
@@ -224,6 +249,8 @@ const styles = {
     border: '1px solid #ccc',
     borderRadius: '8px',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    cursor: "pointer"
+    // transition: "background-color 0.5s ease"
   },
   projectTitle: {
     fontSize: '1.2rem',
@@ -304,11 +331,12 @@ const styles = {
     fontWeight: 'bold',
   },
   foto:{
-    height: "250px"
+    height: "350px",
+    borderRadius: "50%"
   },
   imagenProyecto:{
     height: "150px",
-    borderRadius: "50%"
+    borderRadius: "20%"
   },
   educacionItem: {
     marginBottom: '20px',
@@ -322,6 +350,27 @@ const styles = {
     width: "90%",
     cursor: "pointer"
   },
+  menuHamburguesaDesplegado: {
+    position: 'fixed',
+    top: '50px',
+    right: '0px',
+    width: "100vw",
+    height: "calc(100vh - 50px)",
+    borderRadius: '5px',
+    zIndex: 1100,
+    backgroundColor: 'rgba(0, 0, 0, 0.95)',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: "70px"
+  },
+  menuMobileElement:{
+    color: "white",
+    fontSize: "25px",
+    fontWeight: 700,
+    opacity: 1,
+  }
   
 };
 

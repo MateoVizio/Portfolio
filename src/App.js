@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Home from './components/home';
 import Header from './components/header';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 
 function App() {
@@ -12,6 +12,16 @@ function App() {
   const habilidadesRef = useRef(null);
   const contactoRef = useRef(null);
   const educacionRef = useRef(null);
+  const [isDayMode, setIsDayMode] = useState(true);
+  const [mostrarMenu, setMostrarMenu] = useState(false);
+
+  const toggleTheme = () => {
+    setIsDayMode(!isDayMode);
+  };
+
+  const toggleMenu = () => {
+    setMostrarMenu(!mostrarMenu);
+  }
 
   return (
     <div className="App">
@@ -21,6 +31,10 @@ function App() {
         habilidadesRef={habilidadesRef}
         contactoRef={contactoRef}
         educacionRef={educacionRef}
+        toggleTheme={toggleTheme}
+        isDayMode={isDayMode}
+        toggleMenu={toggleMenu}
+        mostrarMenu={mostrarMenu}
       />
       <Home 
         sobreMiRef={sobreMiRef}
@@ -28,6 +42,9 @@ function App() {
         habilidadesRef={habilidadesRef}
         contactoRef={contactoRef}
         educacionRef={educacionRef}
+        isDayMode={isDayMode}
+        setMostrarMenu={setMostrarMenu}
+        mostrarMenu={mostrarMenu}
       />
     </div>
   );
