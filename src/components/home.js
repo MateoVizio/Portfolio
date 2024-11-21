@@ -341,14 +341,15 @@ const styles = {
   educacionItem: {
     marginBottom: '20px',
     textAlign: 'left',
-    padding: '10px 0px 10px 40px',
+    padding: '10px 40px 10px 40px',
     border: '1px solid #ccc',
     borderRadius: '5px',
     backgroundColor: '#1c306a',
     color: "white",
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.5)',
-    width: "90%",
-    cursor: "pointer"
+    cursor: "pointer",
+    minWidth: "80%",
+    maxWidth: "80%"
   },
   menuHamburguesaDesplegado: {
     position: 'fixed',
