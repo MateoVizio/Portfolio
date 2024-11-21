@@ -336,7 +336,8 @@ const styles = {
   },
   imagenProyecto:{
     height: "150px",
-    borderRadius: "20%"
+    borderRadius: "20%",
+    border: "white solid 2px"
   },
   educacionItem: {
     marginBottom: '20px',
