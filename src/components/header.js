@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useMediaQuery } from 'react-responsive';
 
 
-const Header = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef, educacionRef, toggleTheme, isDayMode, toggleMenu, mostrarMenu}) => {
+const Header = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef, educacionRef, toggleTheme, isDayMode, toggleMenu, setMostrarMenu ,mostrarMenu}) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("Español");
   const [showMenu, setShowMenu] = useState(false);
@@ -11,8 +11,8 @@ const Header = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef, educaci
   const isTabletOrAbove = useMediaQuery({ query: '(max-width: 1020px)' });
   
   useEffect(() => {
-    console.log("cambio el showmenu")
-  }, [showMenu])
+    setIconoHamburguesa(mostrarMenu ? "✖" : "☰");
+  },[mostrarMenu])
   
 
   const handleScroll = (targetRef) => {
@@ -30,8 +30,11 @@ const Header = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef, educaci
 
   const handleIcono = () => {
     setIconoHamburguesa(iconoHamburguesa === "☰" ? "✖" : "☰");
-    setShowMenu(!showMenu);
+    setMostrarMenu(!mostrarMenu);
+    console.log("cambio showMenu por handleIcono")
   };
+
+  
   
   
   

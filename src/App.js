@@ -34,6 +34,7 @@ function App() {
         toggleTheme={toggleTheme}
         isDayMode={isDayMode}
         toggleMenu={toggleMenu}
+        setMostrarMenu={setMostrarMenu}
         mostrarMenu={mostrarMenu}
       />
       <Home 
