@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import { TranslationContext } from '../contexts/TranslationContext';
 
 
 const Header = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef, educacionRef, toggleTheme, isDayMode, toggleMenu, setMostrarMenu ,mostrarMenu}) => {
@@ -9,6 +10,8 @@ const Header = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef, educaci
   const [iconoHamburguesa, setIconoHamburguesa] = useState("☰");
 
   const isTabletOrAbove = useMediaQuery({ query: '(max-width: 1020px)' });
+  
+  const { translations, switchLanguage } = useContext(TranslationContext);
   
   useEffect(() => {
     setIconoHamburguesa(mostrarMenu ? "✖" : "☰");
@@ -34,6 +37,19 @@ const Header = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef, educaci
     console.log("cambio showMenu por handleIcono")
   };
 
+  const handleLanguageChange = () => {
+    switchLanguage("es");
+    setSelectedLanguage("Español");
+    setShowDropdown(false);
+
+  }
+  
+  const handleLanguageChange2 = () => {
+    switchLanguage("en");
+    setSelectedLanguage("Inglés");
+    setShowDropdown(false);
+  } 
+
   
   
   
@@ -50,15 +66,15 @@ const Header = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef, educaci
       {/* Menú normal en pantallas grandes */}
       {!isTabletOrAbove && (
         <ul style={styles.list}>
-          <li style={styles.listItem} onClick={() => handleScroll(sobreMiRef)}>Sobre mí</li>
-          <li style={styles.listItem} onClick={() => handleScroll(proyectosRef)}>Proyectos</li>
-          <li style={styles.listItem} onClick={() => handleScroll(habilidadesRef)}>Tecnologías</li>
-          <li style={styles.listItem} onClick={() => handleScroll(educacionRef)}>Educación</li>
-          <li style={styles.listItem} onClick={() => handleScroll(contactoRef)}>Contacto</li>
+          <li style={styles.listItem} onClick={() => handleScroll(sobreMiRef)}>{translations.aboutMe}</li>
+          <li style={styles.listItem} onClick={() => handleScroll(proyectosRef)}>{translations.projects}</li>
+          <li style={styles.listItem} onClick={() => handleScroll(habilidadesRef)}>{translations.skills}</li>
+          <li style={styles.listItem} onClick={() => handleScroll(educacionRef)}>{translations.education}</li>
+          <li style={styles.listItem} onClick={() => handleScroll(contactoRef)}>{translations.contact}</li>
         </ul>
       )}
 
-      <div style={styles.selectContainer}>
+      <div style={{...styles.selectContainer, display: mostrarMenu && "none"}}>
         <button
           style={styles.selectButton}
           onClick={() => setShowDropdown(!showDropdown)}
@@ -66,10 +82,10 @@ const Header = ({ sobreMiRef, proyectosRef, habilidadesRef, contactoRef, educaci
           {selectedLanguage}
           <span style={styles.selectIcon}>▼</span>
         </button>
-        {showDropdown && (
+        {showDropdown &&(
           <ul style={styles.dropdownList}>
-            <li style={styles.dropdownListItem} onClick={() => handleSelectLanguage("Español")}>Español</li>
-            <li style={styles.dropdownListItem} onClick={() => handleSelectLanguage("Inglés")}>Inglés</li>
+            <li style={styles.dropdownListItem} onClick={handleLanguageChange}>Español</li>
+            <li style={styles.dropdownListItem} onClick={handleLanguageChange2}>Inglés</li>
           </ul>
         )}
       </div>
@@ -178,6 +194,7 @@ const styles = {
     margin: 0,
     boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     minWidth: "100px",
+    zIndex: 1500,
   },
   dropdownListItem: {
     padding: "8px 12px",
